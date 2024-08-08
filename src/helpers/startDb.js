@@ -6,12 +6,14 @@ class MainUser {
     try {
       const query = `
         CREATE TABLE IF NOT EXISTS mainUser (
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          names VARCHAR(255),
+          userId INT AUTO_INCREMENT PRIMARY KEY,
+          name VARCHAR(255),
+          lastname VARCHAR(255),
           company VARCHAR(255),
           email VARCHAR(255) UNIQUE,
           password VARCHAR(255),
-          details VARCHAR(255)
+          details VARCHAR(255),
+          code VARCHAR(6)
         );
       `
       const [rows] = await pool.execute(query)

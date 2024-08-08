@@ -3,7 +3,7 @@ const allowedOrigins = new Set([
 ])
 
 const setCorsHeaders = (req, res) => {
-  const origin = req.headers.origin
+  const origin = req.headers.origin || req.headers.host
   console.log('ORIGIN:', origin)
   const isAllowed = allowedOrigins.has(origin)
   if (isAllowed) {
@@ -14,10 +14,12 @@ const setCorsHeaders = (req, res) => {
   res.removeHeader('X-Powered-By')
 }
 
-export const cors = (req, res, next) => {
+const cors = (req, res, next) => {
   setCorsHeaders(req, res)
   if (req.method === 'OPTIONS') {
     return res.status(204).end()
   }
   next()
 }
+
+export default cors

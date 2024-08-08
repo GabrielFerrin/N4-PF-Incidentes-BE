@@ -1,10 +1,12 @@
 import express from 'express'
 import morgan from 'morgan'
 import MainUser from './helpers/startDb.js'
-import MainUserR from './routes/mainUser.routes.js'
-import { cors } from './middlewares/cors.js'
+import cors from './middlewares/cors.js'
 import notImplemented from './middlewares/notImplemented.js'
 import error from './middlewares/error.js'
+import MainUserR from './routes/mainUser.routes.js'
+import UserTableR from './routes/userTable.routes.js'
+import IncidentTableR from './routes/incidentTable.routes.js'
 
 const app = express()
 
@@ -17,6 +19,8 @@ app.use(cors)
 MainUser.startMainUser()
 
 app.use('/api/mainUser', MainUserR)
+app.use('/api/userTable', UserTableR)
+app.use('/api/incidentTable', IncidentTableR)
 
 // errors
 app.use(notImplemented)
