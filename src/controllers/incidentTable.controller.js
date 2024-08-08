@@ -6,7 +6,7 @@ class IncidentTable {
       const { userId } = req
       await IncidentTableM.create(userId)
       await IncidentTableM.seed(userId)
-      return res.json({ success: true, message: 'Incidente creado' })
+      return res.json({ success: true, message: 'Incidentes creados' })
     } catch (error) {
       return res.status(500).json({
         success: false, message: error.message
