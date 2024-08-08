@@ -4,7 +4,7 @@ class UserTable {
   static create = async (userId) => {
     const query = `
       CREATE TABLE IF NOT EXISTS u_${userId}_user (
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        userId INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255),
         lastname VARCHAR(255),
         email VARCHAR(255) UNIQUE,
@@ -32,7 +32,7 @@ class UserTable {
     const query = `
     INSERT INTO u_${userId}_user (name, lastname, email, password, phone, block, building, department, role) VALUES
     (${name}, ${lastname}, ${email}, 'hashedPassword1', '555-0101', 'A', 'Building1', '101', 'administrador'),
-    ('Jane', 'Smith', 'jane.smith@example.com', 'hashedPassword2', '555-0102', 'A', 'Building2', '102', 'administrador'),
+    ('Jane', 'Smith', 'jane.smith@example.com', 'hashedPassword2', '555-0102', 'A', 'Building2', '102', 'mantenimiento'),
     ('Alice', 'Johnson', 'alice.johnson@example.com', 'hashedPassword3', '555-0103', 'B', 'Building3', '201', 'residente'),
     ('Bob', 'Brown', 'bob.brown@example.com', 'hashedPassword4', '555-0104', 'B', 'Building4', '202', 'residente'),
     ('Charlie', 'Davis', 'charlie.davis@example.com', 'hashedPassword5', '555-0105', 'C', 'Building5', '203', 'residente');

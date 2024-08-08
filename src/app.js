@@ -7,6 +7,7 @@ import error from './middlewares/error.js'
 import MainUserR from './routes/mainUser.routes.js'
 import UserTableR from './routes/userTable.routes.js'
 import IncidentTableR from './routes/incidentTable.routes.js'
+import IncidentR from './routes/incident.routes.js'
 
 const app = express()
 
@@ -21,6 +22,7 @@ MainUser.startMainUser()
 app.use('/api/mainUser', MainUserR)
 app.use('/api/userTable', UserTableR)
 app.use('/api/incidentTable', IncidentTableR)
+app.use('/api/incident', IncidentR)
 
 // errors
 app.use(notImplemented)

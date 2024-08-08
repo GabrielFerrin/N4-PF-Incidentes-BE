@@ -8,9 +8,12 @@ class UserTable {
       await UserTableM.create(userId)
       const user = await MainUserM.getById(userId)
       await UserTableM.seed(userId, user)
-      return res.json({ success: true, message: 'Tabla de usuario creada' })
+      const message = 'Tabla de usuario creada'
+      return res.json({ success: true, message })
     } catch (error) {
-      return res.status(500).json({ success: false, message: error.message })
+      return res.status(500).json({
+        success: false, message: error.message
+      })
     }
   }
 }

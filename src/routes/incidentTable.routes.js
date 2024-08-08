@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import IncidentC from '../controllers/incidentTable.controller.js'
+import IncidentTableC from '../controllers/incidentTable.controller.js'
 import auth from '../middlewares/auth.js'
 
 const router = Router()
 
-router.post('/', auth, IncidentC.create)
+router.post('/', auth, IncidentTableC.create)
 
 export default router
