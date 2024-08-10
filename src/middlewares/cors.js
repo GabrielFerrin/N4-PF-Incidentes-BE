@@ -1,5 +1,6 @@
 const allowedOrigins = new Set([
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'https://condominio-fe.onrender.com'
 ])
 
 const setCorsHeaders = (req, res) => {
