@@ -1,6 +1,12 @@
 import pool from '../config/dbConfig.js'
 
 class User {
+  static get = async (mainUserId, userId) => {
+    const query = `SELECT * FROM u_${mainUserId}_user WHERE userId = ?`
+    const [rows] = await pool.execute(query, [userId])
+    return rows[0]
+  }
+
   static validateMaintenance = async (userId) => {
     const query = `SELECT role FROM u_${userId}_user WHERE userId = ?`
     const [rows] = await pool.execute(query, [userId])

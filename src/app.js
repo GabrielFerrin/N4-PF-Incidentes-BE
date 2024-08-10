@@ -8,6 +8,8 @@ import MainUserR from './routes/mainUser.routes.js'
 import UserTableR from './routes/userTable.routes.js'
 import IncidentTableR from './routes/incidentTable.routes.js'
 import IncidentR from './routes/incident.routes.js'
+import FileTableR from './routes/fileTable.routes.js'
+import FileR from './routes/file.routes.js'
 
 const app = express()
 
@@ -19,10 +21,15 @@ app.use(cors)
 
 MainUser.startMainUser()
 
-app.use('/api/mainUser', MainUserR)
+// tables routes
 app.use('/api/userTable', UserTableR)
 app.use('/api/incidentTable', IncidentTableR)
+app.use('/api/fileTable', FileTableR)
+
+// buisness routes
+app.use('/api/mainUser', MainUserR)
 app.use('/api/incident', IncidentR)
+app.use('/api/file', FileR)
 
 // errors
 app.use(notImplemented)
