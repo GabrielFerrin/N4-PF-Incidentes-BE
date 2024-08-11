@@ -4,6 +4,6 @@ import auth from '../middlewares/auth.js'
 
 const router = Router()
 
-router.post('/', auth, IncidentTableC.create)
+router.post('/', auth.auth, IncidentTableC.create)
 
 export default router

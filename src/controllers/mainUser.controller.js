@@ -1,12 +1,12 @@
 import jwt from 'jsonwebtoken'
+import { compare } from 'bcrypt'
 import { SECRET, CODE } from '../config/config.js'
 import MainUserM from '../models/MainUser.js'
+import UserM from '../models/User.js'
 import AccessCodeM from '../models/AccessCode.js'
-import { compare } from 'bcrypt'
 
 class MainUser {
   static register = async (req, res) => {
-    let message = 'El correo ya existe'
     const errorList = []
     validateData(req.body, errorList)
     if (errorList.length > 0) {
@@ -16,15 +16,16 @@ class MainUser {
       const codeInstances = await MainUserM.codeInstances(req.body.code)
       const allowedAccounts =
         await AccessCodeM.allowedAccounts(req.body.code)
-      message = 'Ya alcanzó el número de cuentas permitidas. ' +
-        'Por favor, contacte con el desarrollador para habilitar ' +
-        'más cuentas.'
-      if (codeInstances === allowedAccounts)
-        return res.status(400).json({ success: false, message })
+      if (codeInstances === allowedAccounts) {
+        errorList.push('Ya alcanzó el número de cuentas permitidas. ' +
+          'Por favor, contacte con el desarrollador para habilitar ' +
+          'más cuentas.')
+        return res.status(400).json({ success: false, message: errorList })
+      }
       const userExists = await MainUserM.findByEmail(req.body.email)
       if (userExists) {
-        message = 'El correo ya existe'
-        return res.status(400).json({ success: false, message })
+        errorList.push('El correo ya existe')
+        return res.status(400).json({ success: false, message: errorList })
       } else {
         const newUser = await MainUserM.register(req.body)
         const token = jwt.sign({ userId: newUser.userId }, SECRET, {
@@ -57,6 +58,15 @@ class MainUser {
       user.token = token
       delete user.password
       res.json({ success: true, user })
+    } catch (error) {
+      res.status(500).json({ success: false, message: error.message })
+    }
+  }
+
+  static getUsers = async (req, res) => {
+    try {
+      const users = await UserM.getAll(req.userId)
+      res.json({ success: true, users })
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }

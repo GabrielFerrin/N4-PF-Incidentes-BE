@@ -7,6 +7,12 @@ class User {
     return rows[0]
   }
 
+  static getAll = async (mainUserId) => {
+    const query = `SELECT * FROM u_${mainUserId}_user`
+    const [rows] = await pool.execute(query)
+    return rows
+  }
+
   static validateMaintenance = async (userId) => {
     const query = `SELECT role FROM u_${userId}_user WHERE userId = ?`
     const [rows] = await pool.execute(query, [userId])
