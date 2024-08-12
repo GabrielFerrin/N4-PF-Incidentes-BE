@@ -1,6 +1,7 @@
 const allowedOrigins = new Set([
   'http://localhost:5173',
-  'https://condominio-fe.onrender.com'
+  'https://condominio-fe.onrender.com',
+  'https://n4-pf-incidentes-fe.vercel.app'
 ])
 
 const setCorsHeaders = (req, res) => {
