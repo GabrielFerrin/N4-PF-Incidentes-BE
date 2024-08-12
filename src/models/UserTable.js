@@ -34,7 +34,7 @@ class UserTable {
     ('Jane', 'Smith', 'jane.smith@example.com', 'hashedPassword2', '555-0102', 'A', 'Edificio 2', '102', 'mantenimiento'),
     ('Alice', 'Johnson', 'alice.johnson@example.com', 'hashedPassword3', '555-0103', 'B', 'Edificio 3', '201', 'residente'),
     ('Bob', 'Brown', 'bob.brown@example.com', 'hashedPassword4', '555-0104', 'B', 'Edificio 4', '202', 'residente'),
-    ('Charlie', 'Davis', 'charlie.davis@example.com', 'hashedPassword5', '555-0105', 'C', 'Edificio 5', '203', 'residente');
+    ('Charls', 'Davis', 'charlie.davis@example.com', 'hashedPassword5', '555-0105', 'C', 'Edificio 5', '203', 'residente');
   `
     await pool.execute(query)
   }
