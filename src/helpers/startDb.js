@@ -13,7 +13,8 @@ class MainUser {
           email VARCHAR(255) UNIQUE,
           password VARCHAR(255),
           details VARCHAR(255),
-          code VARCHAR(6)
+          code VARCHAR(6),
+          image VARCHAR(255)
         );
       `
       const [rows] = await pool.execute(query)
