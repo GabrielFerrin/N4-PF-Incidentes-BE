@@ -25,9 +25,9 @@ class UserTable {
   }
 
   static seed = async (userId, user) => {
-    const name = user.name ? (`'${user.name}'`) : 'John'
-    const lastname = user.lastname ? (`'${user.lastname}'`) : 'Doe'
-    const email = user.email ? (`'${user.email}'`) : 'john.doe@example.com'
+    const name = user.name ? (`'${user.name}'`) : "'John'"
+    const lastname = user.lastname ? (`'${user.lastname}'`) : "'Doe'"
+    const email = user.email ? (`'${user.email}'`) : "'john.doe@example.com'"
     const query = `
     INSERT INTO u_${userId}_user (name, lastname, email, password, phone, block, building, department, role) VALUES
     (${name}, ${lastname}, ${email}, 'hashedPassword1', '555-0101', 'A', 'Edificio 1', '101', 'administrador'),

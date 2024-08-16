@@ -32,7 +32,7 @@ class MainUser {
           expiresIn: '1h'
         })
         newUser.token = token
-        res.status(201).json({ success: true, newUser })
+        res.status(201).json({ success: true, user: newUser })
       }
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
@@ -64,6 +64,7 @@ class MainUser {
   }
 
   static getUsers = async (req, res) => {
+    console.log(req.userId)
     try {
       const users = await UserM.getAll(req.userId)
       res.json({ success: true, users })

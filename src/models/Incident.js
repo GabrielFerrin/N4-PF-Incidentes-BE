@@ -60,7 +60,6 @@ class Incident {
       SELECT * FROM u_${mainUserId}_incident
       WHERE incidentId = ? AND userId = ?
     `
-    console.log(incidentId, userId)
     const [rows] = await pool.execute(query, [incidentId, userId])
     return rows.length > 0
   }

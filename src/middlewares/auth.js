@@ -4,7 +4,6 @@ import MainUserM from '../models/MainUser.js'
 
 const auth = (req, res, next) => {
   const token = req.headers.authorization
-  console.log(req.headers.authorization)
   const message = 'Token no válido'
   if (token) {
     jwt.verify(token, SECRET, (err, decoded) => {

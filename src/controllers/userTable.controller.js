@@ -1,5 +1,5 @@
-import UserTableM from '../models/UserTable.js'
 import MainUserM from '../models/MainUser.js'
+import UserTableM from '../models/UserTable.js'
 
 class UserTable {
   static create = async (req, res) => {

@@ -7,7 +7,6 @@ class File {
     try {
       const { userId } = req
       const { incidentId } = req.body
-      console.log(incidentId)
       const errorList = []
       await validate(req.body, errorList)
       if (errorList.length > 0) {
